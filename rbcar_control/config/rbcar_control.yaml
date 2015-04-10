@@ -1,0 +1,56 @@
+rbcar:
+  left_front_shock_controller:
+#    type: velocity_controllers/JointVelocityController
+    type: effort_controllers/JointEffortController
+    joint: left_front_shock
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  
+  left_steering_joint_controller:
+    type: effort_controllers/JointPositionController
+    joint: left_steering_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+    
+  left_front_axle_controller:
+    type: effort_controllers/JointEffortController
+    joint: left_front_axle
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+    
+  right_front_shock_controller:
+    type: effort_controllers/JointEffortController
+    joint: right_front_shock
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  right_steering_joint_controller:
+    type: effort_controllers/JointPositionController
+    joint: right_steering_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+    
+  right_front_axle_controller:
+    type: effort_controllers/JointEffortController
+    joint: right_front_axle
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+
+  left_rear_shock_controller:
+    type: effort_controllers/JointEffortController
+    joint: left_rear_shock
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  left_rear_axle_controller:
+    type: effort_controllers/JointEffortController
+    joint: left_rear_axle
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  right_rear_shock_controller:
+    type: effort_controllers/JointEffortController
+    joint: right_rear_shock
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  right_rear_axle_controller:
+    type: effort_controllers/JointEffortController
+    joint: right_rear_axle
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  joint_read_state_controller:
+    type: joint_state_controller/JointStateController 
+    publish_rate: 100.0

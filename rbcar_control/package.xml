@@ -41,11 +41,11 @@
   <!--   <test_depend>gtest</test_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>robot_state_publisher</build_depend>
-  <build_depend>ros_control</build_depend>
-  <build_depend>ros_controllers</build_depend>
+  <!-- build_depend>ros_control</build_depend>
+  <build_depend>ros_controllers</build_depend -->
   <run_depend>robot_state_publisher</run_depend>
-  <run_depend>ros_control</run_depend>
-  <run_depend>ros_controllers</run_depend>
+  <!-- run_depend>ros_control</run_depend>
+  <run_depend>ros_controllers</run_depend -->
 
 
   <!-- The export tag contains other, unspecified, tags -->

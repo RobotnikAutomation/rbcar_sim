@@ -6,8 +6,8 @@ project(rbcar_control)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   robot_state_publisher
-  ros_control
-  ros_controllers
+#  ros_control
+#  ros_controllers
 )
 
 ## System dependencies are found with CMake's conventions

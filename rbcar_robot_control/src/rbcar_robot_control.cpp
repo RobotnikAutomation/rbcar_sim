@@ -203,23 +203,25 @@ RbcarControllerClass(ros::NodeHandle h) : diagnostic_(),
   else ROS_INFO("Robot Model : %s", robot_model_.c_str());
 
   // Ackermann configuration - traction - topics
-  private_node_handle_.param<std::string>("frw_vel_topic", frw_vel_topic_, "/rbcar/joint_frw_velocity_controller/command");
-  private_node_handle_.param<std::string>("flw_vel_topic", flw_vel_topic_, "/rbcar/joint_flw_velocity_controller/command");
-  private_node_handle_.param<std::string>("blw_vel_topic", blw_vel_topic_, "/rbcar/joint_blw_velocity_controller/command");
-  private_node_handle_.param<std::string>("brw_vel_topic", brw_vel_topic_, "/rbcar/joint_brw_velocity_controller/command");
+
+
+  private_node_handle_.param<std::string>("frw_vel_topic", frw_vel_topic_, "/rbcar/right_front_axle_controller/command");
+  private_node_handle_.param<std::string>("flw_vel_topic", flw_vel_topic_, "/rbcar/left_front_axle_controller/command");
+  private_node_handle_.param<std::string>("blw_vel_topic", blw_vel_topic_, "/rbcar/left_rear_axle_controller/command");
+  private_node_handle_.param<std::string>("brw_vel_topic", brw_vel_topic_, "/rbcar/right_rear_axle_controller/command");
 
   // Ackermann configuration - traction - joint names 
-  private_node_handle_.param<std::string>("joint_front_right_wheel", joint_front_right_wheel, "joint_front_right_wheel");
-  private_node_handle_.param<std::string>("joint_front_left_wheel", joint_front_left_wheel, "joint_front_left_wheel");
-  private_node_handle_.param<std::string>("joint_back_left_wheel", joint_back_left_wheel, "joint_back_left_wheel");
-  private_node_handle_.param<std::string>("joint_back_right_wheel", joint_back_right_wheel, "joint_back_right_wheel");
+  private_node_handle_.param<std::string>("joint_front_right_wheel", joint_front_right_wheel, "right_front_axle");
+  private_node_handle_.param<std::string>("joint_front_left_wheel", joint_front_left_wheel, "left_front_axle");
+  private_node_handle_.param<std::string>("joint_back_left_wheel", joint_back_left_wheel, "left_rear_axle");
+  private_node_handle_.param<std::string>("joint_back_right_wheel", joint_back_right_wheel, "right_rear_axle");
 
   // Ackermann configuration - direction - topics
-  private_node_handle_.param<std::string>("frw_pos_topic", frw_pos_topic_, "/rbcar/joint_frw_position_controller/command");
-  private_node_handle_.param<std::string>("flw_pos_topic", flw_pos_topic_, "/rbcar/joint_flw_position_controller/command");
+  private_node_handle_.param<std::string>("frw_pos_topic", frw_pos_topic_, "/rbcar/right_steering_joint_controller/command");
+  private_node_handle_.param<std::string>("flw_pos_topic", flw_pos_topic_, "/rbcar/left_steering_joint_controller/command");
 
-  private_node_handle_.param<std::string>("joint_front_right_steer", joint_front_right_steer, "joint_front_right_wheel_dir"); 
-  private_node_handle_.param<std::string>("joint_front_left_steer", joint_front_left_steer, "joint_front_left_wheel_dir");
+  private_node_handle_.param<std::string>("joint_front_right_steer", joint_front_right_steer, "right_steering_joint"); 
+  private_node_handle_.param<std::string>("joint_front_left_steer", joint_front_left_steer, "left_steering_joint");
 
   // Robot parameters
   if (!private_node_handle_.getParam("rbcar_d_wheels", rbcar_d_wheels_))
@@ -356,10 +358,10 @@ void UpdateControl()
    std_msgs::Float64 flw_ref_vel_msg;
    std_msgs::Float64 brw_ref_vel_msg;
    std_msgs::Float64 blw_ref_vel_msg;
-   frw_ref_vel_msg.data = ref_speed_joint;
-   flw_ref_vel_msg.data = ref_speed_joint;
-   brw_ref_vel_msg.data = ref_speed_joint;
-   blw_ref_vel_msg.data = ref_speed_joint;
+   frw_ref_vel_msg.data = -ref_speed_joint;
+   flw_ref_vel_msg.data = -ref_speed_joint;
+   brw_ref_vel_msg.data = -ref_speed_joint;
+   blw_ref_vel_msg.data = -ref_speed_joint;
 
    // Publish msgs traction and direction
    ref_vel_frw_.publish( frw_ref_vel_msg );

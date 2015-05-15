@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+
+  <rosparam command="load" file="$(find rbcar_robot_control)/config/rbcar.yaml" />
+
+  <node name="rbcar_robot_control" pkg="rbcar_robot_control" type="rbcar_robot_control_node" output="screen"/> 
+  
+</launch>

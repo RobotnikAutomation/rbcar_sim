@@ -362,7 +362,7 @@ void UpdateControl()
    flw_ref_vel_msg.data = -ref_speed_joint;
    brw_ref_vel_msg.data = -ref_speed_joint;
    blw_ref_vel_msg.data = -ref_speed_joint;
-
+   
    // Publish msgs traction and direction
    ref_vel_frw_.publish( frw_ref_vel_msg );
    ref_vel_flw_.publish( flw_ref_vel_msg );
@@ -506,7 +506,9 @@ void check_command_subscriber(diagnostic_updater::DiagnosticStatusWrapper &stat)
 	if(diff > 1.0){
 		stat.summary(diagnostic_msgs::DiagnosticStatus::WARN, "Topic is not receiving commands");
 		//ROS_INFO("check_command_subscriber: %lf seconds without commands", diff);
-		// TODO: Set Speed References to 0
+		// If no command is received, set Speed References to 0
+		// Turning angle can stay in the previous position.
+		v_ref_ = 0.0;
 	}else{
 		stat.summary(diagnostic_msgs::DiagnosticStatus::OK, "Topic receiving commands");
 	}
@@ -545,7 +547,7 @@ void jointStateCallback(const sensor_msgs::JointStateConstPtr& msg)
 
 // Topic command
 // void commandCallback(const geometry_msgs::TwistConstPtr& msg)
-//void commandCallback(const ackermann_msgs::AckermannDriveStamped& msg)
+// void commandCallback(const ackermann_msgs::AckermannDriveStamped& msg)
 void commandCallback(const ackermann_msgs::AckermannDriveStamped::ConstPtr& msg)
 {
   // Safety check

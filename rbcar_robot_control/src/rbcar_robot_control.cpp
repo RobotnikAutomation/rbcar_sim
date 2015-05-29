@@ -264,7 +264,7 @@ RbcarControllerClass(ros::NodeHandle h) : diagnostic_(),
   joint_state_sub_ = rbcar_robot_control_node_handle.subscribe<sensor_msgs::JointState>("/rbcar/joint_states", 1, &RbcarControllerClass::jointStateCallback, this);
 
   // Subscribe to imu data
-  imu_sub_ = rbcar_robot_control_node_handle.subscribe("/rbcar/imu_data", 1, &RbcarControllerClass::imuCallback, this);
+  imu_sub_ = rbcar_robot_control_node_handle.subscribe("/imu_data", 1, &RbcarControllerClass::imuCallback, this);
 
   // Adevertise reference topics for the controllers 
   ref_vel_frw_ = rbcar_robot_control_node_handle.advertise<std_msgs::Float64>( frw_vel_topic_, 50);
@@ -384,9 +384,7 @@ void UpdateOdometry()
     a2 = radnorm2( joint_state_.position[flw_pos_] );
 
     // Linear speed of each wheel [mps]
-	double v1, v2, v3, v4; 
-	v1 = joint_state_.velocity[frw_vel_] * (rbcar_wheel_diameter_ / 2.0);
-	v2 = joint_state_.velocity[flw_vel_] * (rbcar_wheel_diameter_ / 2.0);
+	double v3, v4; 
 	v3 = joint_state_.velocity[blw_vel_] * (rbcar_wheel_diameter_ / 2.0);
 	v4 = joint_state_.velocity[brw_vel_] * (rbcar_wheel_diameter_ / 2.0);
 	
@@ -394,14 +392,15 @@ void UpdateOdometry()
     double fBetaRads = (a1 + a2) / 2.0;
 	
 	// Linear speed
-    double fSamplePeriod = 1.0 / desired_freq_;  // Default sample period
-    double v_mps = (v1 + v2 + v3 + v4) / 4.0;
+    double fSamplePeriod = 1.0 / desired_freq_;  // Default sample period    
+    double v_mps = -(v3 + v4) / 2.0;
 
     // Compute orientation just integrating imu gyro (not so reliable with the simulated imu)
     // robot_pose_pa_ += ang_vel_z_ * fSamplePeriod;
 
 	// Compute orientation converting imu orientation estimation
 	tf::Quaternion q(orientation_x_, orientation_y_, orientation_z_, orientation_w_);
+	// ROS_INFO("ox=%5.2f oy=%5.2f oz=%5.2f ow=%5.2f", orientation_x_, orientation_y_, orientation_z_, orientation_w_);
 	tf::Matrix3x3 m(q);
 	double roll, pitch, yaw;
 	m.getRPY(roll, pitch, yaw);
@@ -412,8 +411,7 @@ void UpdateOdometry()
          robot_pose_pa_ -= 2.0 * PI;
     while (robot_pose_pa_ <= (-PI))
          robot_pose_pa_ += 2.0 * PI;
-
-    // Velocities
+    
     double vx = v_mps * cos(fBetaRads) * cos(robot_pose_pa_);
     double vy = v_mps * cos(fBetaRads) * sin(robot_pose_pa_);
 

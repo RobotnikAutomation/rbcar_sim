@@ -13,7 +13,7 @@ It contains the launch and config files to launch Gazebo with the robot.
 
 ## rbcar_robot_control
 
-It’s the robot’s Gazebo plug-in controller. It implements the control of the ackerman kinematics of the robot, controlling the traction and steering motors. This component is the component that publishes the robot’s odometry.
+It’s the robot’s Gazebo plug-in controller. It implements the control of the ackerman kinematics of the robot, controlling the traction and steering motors. This component publishes the robot’s odometry.
 
 ## rbcar_sim_bringup
 

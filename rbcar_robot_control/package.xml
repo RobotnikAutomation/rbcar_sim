@@ -1,15 +1,17 @@
 <?xml version="1.0"?>
 <package>
   <name>rbcar_robot_control</name>
-  <version>0.0.0</version>
+  <version>1.0.0</version>
   <description>The rbcar_robot_control package</description>
 
-  <!-- One maintainer tag required, multiple allowed, one person per tag --> 
-  <maintainer email="info@robotnik.es">trurl</maintainer>
 
+  <maintainer email="cvillar@robotnik.es">Carlos Villar</maintainer>
+  <url type="website">http://wiki.ros.org/rbcar_robot_control</url>
+  <url type="repository">https://github.com/RobotnikAutomation/rbcar_sim</url>
+  <url type="bugtracker">https://github.com/RobotnikAutomation/rbcar_sim/issues</url>
   <license>BSD</license>
 
-  <author email="info@robotnik.es">Robotnik</author> 
+  <author email="cvillar@robotnik.es">Carlos Villar</author> 
 
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>ackermann_msgs</build_depend>
@@ -29,8 +31,8 @@
   <run_depend>sensor_msgs</run_depend>
   <run_depend>tf</run_depend>
 
-  <!-- The export tag contains other, unspecified, tags -->
+
   <export>
-    <!-- Other tools can request additional information be placed here -->
+
   </export>
 </package>

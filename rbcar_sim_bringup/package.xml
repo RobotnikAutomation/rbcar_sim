@@ -1,33 +1,21 @@
 <?xml version="1.0"?>
 <package>
   <name>rbcar_sim_bringup</name>
-  <version>0.0.0</version>
+  <version>1.0.0</version>
   <description>The rbcar_sim_bringup package</description>
 
-  <maintainer email="info@robotnik.es">Robotnik</maintainer>
+  <maintainer email="cvillar@robotnik.es">Carlos Villar</maintainer>
 
   <license>BSD</license>
 
-  <author email="info@robotnik.es">Robotnik</author>
+  <author email="cvillar@robotnik.es">Carlos Villar</author>
 
-
-  <!-- The *_depend tags are used to specify dependencies -->
-  <!-- Dependencies can be catkin packages or system dependencies -->
-  <!-- Examples: -->
-  <!-- Use build_depend for packages you need at compile time: -->
-  <!--   <build_depend>message_generation</build_depend> -->
-  <!-- Use buildtool_depend for build tool packages: -->
-  <!--   <buildtool_depend>catkin</buildtool_depend> -->
-  <!-- Use run_depend for packages you need at runtime: -->
-  <!--   <run_depend>message_runtime</run_depend> -->
-  <!-- Use test_depend for packages you need only for testing: -->
-  <!--   <test_depend>gtest</test_depend> -->
+  <url type="website">http://wiki.ros.org/rbcar_sim_bringup</url>
+  <url type="repository">https://github.com/RobotnikAutomation/rbcar_sim</url>
+  <url type="bugtracker">https://github.com/RobotnikAutomation/rbcar_sim/issues</url>
   <buildtool_depend>catkin</buildtool_depend>
 
-
-  <!-- The export tag contains other, unspecified, tags -->
   <export>
-    <!-- Other tools can request additional information be placed here -->
 
   </export>
 </package>

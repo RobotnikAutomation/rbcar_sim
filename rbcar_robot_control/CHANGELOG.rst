@@ -2,8 +2,8 @@
 Changelog for package rbcar_robot_control
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.1 (2016-07-04)
+------------------
 * Modified CMakeLists and package files
 * Adding compilation dependencies with robotnik_msgs
 * updated to set speed to 0 when no commands received - todo, add brakes

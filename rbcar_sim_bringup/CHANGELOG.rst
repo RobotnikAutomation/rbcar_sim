@@ -2,8 +2,8 @@
 Changelog for package rbcar_sim_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.1 (2016-07-04)
+------------------
 * Modified CMakeLists and package files
 * added cfg for gps and odom robot_localization
 * added marker size to view them when the rbcar is on them

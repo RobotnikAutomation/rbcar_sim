@@ -2,8 +2,8 @@
 Changelog for package rbcar_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.1 (2016-07-04)
+------------------
 * Modified CMakeLists and package files
 * added gs world
 * added rbcar_gazebo

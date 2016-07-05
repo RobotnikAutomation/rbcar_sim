@@ -6,6 +6,8 @@
 
 
   <maintainer email="cvillar@robotnik.es">Carlos Villar</maintainer>
+  <maintainer email="rguzman@robotnik.es">Roberto Guzman</maintainer>
+  <maintainer email="rnavarro@robotnik.es">Román Navarro</maintainer>
   
   <url type="website">http://wiki.ros.org/rbcar_joystick</url>
   <url type="repository">https://github.com/RobotnikAutomation/rbcar_sim</url>
@@ -13,7 +15,7 @@
   
   <license>BSD</license>
 
-  <author email="cvillar@robotnik.es">Carlos Villar</author>
+  <author email="rguzman@robotnik.es">Roberto Guzman</author>
 
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>geometry_msgs</build_depend>

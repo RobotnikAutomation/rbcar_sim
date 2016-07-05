@@ -5,6 +5,8 @@
   <description>The rbcar_sim package. It contains RBCAR simulation packages</description>
   
   <maintainer email="cvillar@robotnik.es">Carlos Villar</maintainer>
+  <maintainer email="rguzman@robotnik.es">Roberto Guzman</maintainer>
+  <maintainer email="rnavarro@robotnik.es">Román Navarro</maintainer>
 
   <license>BSD</license>
 
@@ -13,6 +15,7 @@
   <url type="bugtracker">https://github.com/RobotnikAutomation/rbcar_sim/issues</url>
 
   <author email="rguzman@robotnik.es">Roberto Guzman</author>
+  
 
   <buildtool_depend>catkin</buildtool_depend>
   

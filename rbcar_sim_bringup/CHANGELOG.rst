@@ -2,8 +2,8 @@
 Changelog for package rbcar_sim_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.2 (2016-07-06)
+------------------
 * Modified authors and maintainers
 * modified CMakeLists y Package files
 * Contributors: carlos3dx

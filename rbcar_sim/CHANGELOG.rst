@@ -2,8 +2,8 @@
 Changelog for package rbcar_sim
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.2 (2016-07-06)
+------------------
 * Modified authors and maintainers
 * Contributors: carlos3dx
 

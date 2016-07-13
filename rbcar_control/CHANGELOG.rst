@@ -2,6 +2,9 @@
 Changelog for package rbcar_control
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.0.2 (2016-07-06)
 ------------------
 * Modified authors and maintainers

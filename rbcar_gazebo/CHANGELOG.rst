@@ -2,8 +2,8 @@
 Changelog for package rbcar_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.4 (2016-07-15)
+------------------
 * added gas station world to do some testing with map based loc and nav
 * Contributors: rguzman1
 

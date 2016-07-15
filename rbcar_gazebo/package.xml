@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>rbcar_gazebo</name>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
   <description>The rbcar_gazebo package</description>
 
   <maintainer email="cvillar@robotnik.es">Carlos Villar</maintainer>

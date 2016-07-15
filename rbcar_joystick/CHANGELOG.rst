@@ -2,6 +2,9 @@
 Changelog for package rbcar_joystick
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.0.3 (2016-07-13)
 ------------------
 

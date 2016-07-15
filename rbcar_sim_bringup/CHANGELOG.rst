@@ -2,6 +2,11 @@
 Changelog for package rbcar_sim_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* added launch to test in gs world with teb
+* Contributors: rguzman1
+
 1.0.3 (2016-07-13)
 ------------------
 

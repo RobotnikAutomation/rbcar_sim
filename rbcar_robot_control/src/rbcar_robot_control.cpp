@@ -264,7 +264,7 @@ RbcarControllerClass(ros::NodeHandle h) : diagnostic_(),
   joint_state_sub_ = rbcar_robot_control_node_handle.subscribe<sensor_msgs::JointState>("/rbcar/joint_states", 1, &RbcarControllerClass::jointStateCallback, this);
 
   // Subscribe to imu data
-  imu_sub_ = rbcar_robot_control_node_handle.subscribe("/imu_data", 1, &RbcarControllerClass::imuCallback, this);
+  imu_sub_ = rbcar_robot_control_node_handle.subscribe("/imu/data", 1, &RbcarControllerClass::imuCallback, this);
 
   // Adevertise reference topics for the controllers 
   ref_vel_frw_ = rbcar_robot_control_node_handle.advertise<std_msgs::Float64>( frw_vel_topic_, 50);

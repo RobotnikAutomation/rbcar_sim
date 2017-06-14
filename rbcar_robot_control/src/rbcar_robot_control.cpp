@@ -255,7 +255,7 @@ RbcarControllerClass(ros::NodeHandle h) : diagnostic_(),
   // Imu variables
   ang_vel_x_ = 0.0; ang_vel_y_ = 0.0; ang_vel_z_ = 0.0;
   lin_acc_x_ = 0.0; lin_acc_y_ = 0.0; lin_acc_z_ = 0.0;
-  orientation_x_ = 0.0; orientation_y_ = 0.0; orientation_z_ = 0.0; orientation_w_ = 0.0;
+  orientation_x_ = 0.0; orientation_y_ = 0.0; orientation_z_ = 0.0; orientation_w_ = 1.0;
 
   // Advertise controller services
   srv_SetOdometry_ = rbcar_robot_control_node_handle.advertiseService("set_odometry",  &RbcarControllerClass::srvCallback_SetOdometry, this);

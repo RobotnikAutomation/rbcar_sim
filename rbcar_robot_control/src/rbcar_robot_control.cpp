@@ -58,8 +58,9 @@
 #define RBCAR_MIN_COMMAND_REC_FREQ   5.0
 #define RBCAR_MAX_COMMAND_REC_FREQ   150.0
 
-#define RBCAR_D_WHEELS_M            1.65    // distance from front to back axis, car-like kinematics
-#define RBCAR_WHEEL_DIAMETER	    0.470   // wheel avg diameter - may need calibration according to tyre pressure
+#define RBCAR_D_WHEELS_M            	1.65    // distance from front to back axis, car-like kinematics
+#define RBCAR_WHEEL_DIAMETER	    	0.470   // wheel avg diameter - may need calibration according to tyre pressure
+#define RBCAR_JOINT_STATES_TIME_WINDOW	1.0		// accepted time deviation to process joint_sttate
         
 using namespace std;
 
@@ -377,17 +378,26 @@ void UpdateOdometry()
 {
 	// Get angles
     double a1, a2;
-    //ROS_INFO("UpdateOdometry 1: frw_pos_:%d flw_pos_:%d blw_pos_:%d brw_pos_:%d", frw_pos_, flw_pos_, blw_pos_, brw_pos_);
-    //ROS_INFO("UpdateOdometry 1: frw_pos_:%5.2f flw_pos_:%5.2f", 
+    
+    if( (ros::Time::now() - joint_state_.header.stamp).toSec() > RBCAR_JOINT_STATES_TIME_WINDOW){
+		ROS_WARN_THROTTLE(2, "RbcarControllerClass::UpdateOdometry: joint_states are not being received");
+		return;
+	}
+		
 	//		joint_state_.position[frw_pos_], joint_state_.position[flw_pos_])
     a1 = radnorm2( joint_state_.position[frw_pos_] );
     a2 = radnorm2( joint_state_.position[flw_pos_] );
 
     // Linear speed of each wheel [mps]
 	double v3, v4; 
-	v3 = joint_state_.velocity[blw_vel_] * (rbcar_wheel_diameter_ / 2.0);
-	v4 = joint_state_.velocity[brw_vel_] * (rbcar_wheel_diameter_ / 2.0);
-	
+	// filtering noise from the Velocity controller when the speed is 0.0 (by using an open loop with desired speed)
+	if( v_ref_ == 0.0){
+		v3 = 0.0;
+		v4 = 0.0;
+	}else{
+		v3 = joint_state_.velocity[blw_vel_] * (rbcar_wheel_diameter_ / 2.0);
+		v4 = joint_state_.velocity[brw_vel_] * (rbcar_wheel_diameter_ / 2.0);
+	}
     // Turning angle front 
     double fBetaRads = (a1 + a2) / 2.0;
 	

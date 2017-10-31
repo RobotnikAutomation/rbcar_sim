@@ -205,10 +205,10 @@ RbcarControllerClass(ros::NodeHandle h) : diagnostic_(),
   // Ackermann configuration - traction - topics
 
 
-  private_node_handle_.param<std::string>("frw_vel_topic", frw_vel_topic_, "/rbcar/right_front_axle_controller/command");
-  private_node_handle_.param<std::string>("flw_vel_topic", flw_vel_topic_, "/rbcar/left_front_axle_controller/command");
-  private_node_handle_.param<std::string>("blw_vel_topic", blw_vel_topic_, "/rbcar/left_rear_axle_controller/command");
-  private_node_handle_.param<std::string>("brw_vel_topic", brw_vel_topic_, "/rbcar/right_rear_axle_controller/command");
+  private_node_handle_.param<std::string>("frw_vel_topic", frw_vel_topic_, "rbcar/right_front_axle_controller/command");
+  private_node_handle_.param<std::string>("flw_vel_topic", flw_vel_topic_, "rbcar/left_front_axle_controller/command");
+  private_node_handle_.param<std::string>("blw_vel_topic", blw_vel_topic_, "rbcar/left_rear_axle_controller/command");
+  private_node_handle_.param<std::string>("brw_vel_topic", brw_vel_topic_, "rbcar/right_rear_axle_controller/command");
 
   // Ackermann configuration - traction - joint names 
   private_node_handle_.param<std::string>("joint_front_right_wheel", joint_front_right_wheel, "right_front_axle");
@@ -217,8 +217,8 @@ RbcarControllerClass(ros::NodeHandle h) : diagnostic_(),
   private_node_handle_.param<std::string>("joint_back_right_wheel", joint_back_right_wheel, "right_rear_axle");
 
   // Ackermann configuration - direction - topics
-  private_node_handle_.param<std::string>("frw_pos_topic", frw_pos_topic_, "/rbcar/right_steering_joint_controller/command");
-  private_node_handle_.param<std::string>("flw_pos_topic", flw_pos_topic_, "/rbcar/left_steering_joint_controller/command");
+  private_node_handle_.param<std::string>("frw_pos_topic", frw_pos_topic_, "rbcar/right_steering_joint_controller/command");
+  private_node_handle_.param<std::string>("flw_pos_topic", flw_pos_topic_, "rbcar/left_steering_joint_controller/command");
 
   private_node_handle_.param<std::string>("joint_front_right_steer", joint_front_right_steer, "right_steering_joint"); 
   private_node_handle_.param<std::string>("joint_front_left_steer", joint_front_left_steer, "left_steering_joint");
@@ -255,30 +255,30 @@ RbcarControllerClass(ros::NodeHandle h) : diagnostic_(),
   // Imu variables
   ang_vel_x_ = 0.0; ang_vel_y_ = 0.0; ang_vel_z_ = 0.0;
   lin_acc_x_ = 0.0; lin_acc_y_ = 0.0; lin_acc_z_ = 0.0;
-  orientation_x_ = 0.0; orientation_y_ = 0.0; orientation_z_ = 0.0; orientation_w_ = 0.0;
+  orientation_x_ = 0.0; orientation_y_ = 0.0; orientation_z_ = 0.0; orientation_w_ = 1.0;
 
   // Advertise controller services
   srv_SetOdometry_ = rbcar_robot_control_node_handle.advertiseService("set_odometry",  &RbcarControllerClass::srvCallback_SetOdometry, this);
 
   // Subscribe to joint states topic
-  joint_state_sub_ = rbcar_robot_control_node_handle.subscribe<sensor_msgs::JointState>("/rbcar/joint_states", 1, &RbcarControllerClass::jointStateCallback, this);
+  joint_state_sub_ = node_handle_.subscribe<sensor_msgs::JointState>("joint_states", 1, &RbcarControllerClass::jointStateCallback, this);
 
   // Subscribe to imu data
-  imu_sub_ = rbcar_robot_control_node_handle.subscribe("/imu_data", 1, &RbcarControllerClass::imuCallback, this);
+  imu_sub_ = node_handle_.subscribe("imu/data", 1, &RbcarControllerClass::imuCallback, this);
 
   // Adevertise reference topics for the controllers 
-  ref_vel_frw_ = rbcar_robot_control_node_handle.advertise<std_msgs::Float64>( frw_vel_topic_, 50);
-  ref_vel_flw_ = rbcar_robot_control_node_handle.advertise<std_msgs::Float64>( flw_vel_topic_, 50);
-  ref_vel_blw_ = rbcar_robot_control_node_handle.advertise<std_msgs::Float64>( blw_vel_topic_, 50);
-  ref_vel_brw_ = rbcar_robot_control_node_handle.advertise<std_msgs::Float64>( brw_vel_topic_, 50);  
-  ref_pos_frw_ = rbcar_robot_control_node_handle.advertise<std_msgs::Float64>( frw_pos_topic_, 50);
-  ref_pos_flw_ = rbcar_robot_control_node_handle.advertise<std_msgs::Float64>( flw_pos_topic_, 50);
+  ref_vel_frw_ = node_handle_.advertise<std_msgs::Float64>( frw_vel_topic_, 50);
+  ref_vel_flw_ = node_handle_.advertise<std_msgs::Float64>( flw_vel_topic_, 50);
+  ref_vel_blw_ = node_handle_.advertise<std_msgs::Float64>( blw_vel_topic_, 50);
+  ref_vel_brw_ = node_handle_.advertise<std_msgs::Float64>( brw_vel_topic_, 50);  
+  ref_pos_frw_ = node_handle_.advertise<std_msgs::Float64>( frw_pos_topic_, 50);
+  ref_pos_flw_ = node_handle_.advertise<std_msgs::Float64>( flw_pos_topic_, 50);
   	  
   // Subscribe to command topic
   cmd_sub_ = rbcar_robot_control_node_handle.subscribe<ackermann_msgs::AckermannDriveStamped>("command", 1, &RbcarControllerClass::commandCallback, this);
     
   // Publish odometry 
-  odom_pub_ = rbcar_robot_control_node_handle.advertise<nav_msgs::Odometry>("/rbcar_robot_control/odom", 1000);
+  odom_pub_ = private_node_handle_.advertise<nav_msgs::Odometry>("odom", 1000);
 
   // Component frequency diagnostics
   diagnostic_.setHardwareID("rbcar_robot_control - simulation");
@@ -290,7 +290,7 @@ RbcarControllerClass(ros::NodeHandle h) : diagnostic_(),
   double min_freq = RBCAR_MIN_COMMAND_REC_FREQ; // If you update these values, the
   double max_freq = RBCAR_MAX_COMMAND_REC_FREQ; // HeaderlessTopicDiagnostic will use the new values.
   
-  subs_command_freq = new diagnostic_updater::HeaderlessTopicDiagnostic("/rbcar_robot_control/command", diagnostic_,
+  subs_command_freq = new diagnostic_updater::HeaderlessTopicDiagnostic("~command", diagnostic_,
 	                    diagnostic_updater::FrequencyStatusParam(&min_freq, &max_freq, 0.1, 10));
   subs_command_freq->addTask(&command_freq_); // Adding an additional task to the control
   
@@ -301,20 +301,20 @@ RbcarControllerClass(ros::NodeHandle h) : diagnostic_(),
 /// Controller startup in realtime
 int starting()
 {
-  ROS_INFO("RbcarControllerClass::starting");
-
   // Initialize joint indexes according to joint names 
   if (read_state_) {
-    vector<string> joint_names = joint_state_.name;
-    frw_vel_ = find (joint_names.begin(),joint_names.end(), string(joint_front_right_wheel)) - joint_names.begin();
-    flw_vel_ = find (joint_names.begin(),joint_names.end(), string(joint_front_left_wheel)) - joint_names.begin();
-    blw_vel_ = find (joint_names.begin(),joint_names.end(), string(joint_back_left_wheel)) - joint_names.begin();
-    brw_vel_ = find (joint_names.begin(),joint_names.end(), string(joint_back_right_wheel)) - joint_names.begin();
-    frw_pos_ = find (joint_names.begin(),joint_names.end(), string(joint_front_right_steer)) - joint_names.begin();
-    flw_pos_ = find (joint_names.begin(),joint_names.end(), string(joint_front_left_steer)) - joint_names.begin();
+		vector<string> joint_names = joint_state_.name;
+		frw_vel_ = find (joint_names.begin(),joint_names.end(), string(joint_front_right_wheel)) - joint_names.begin();
+		flw_vel_ = find (joint_names.begin(),joint_names.end(), string(joint_front_left_wheel)) - joint_names.begin();
+		blw_vel_ = find (joint_names.begin(),joint_names.end(), string(joint_back_left_wheel)) - joint_names.begin();
+		brw_vel_ = find (joint_names.begin(),joint_names.end(), string(joint_back_right_wheel)) - joint_names.begin();
+		frw_pos_ = find (joint_names.begin(),joint_names.end(), string(joint_front_right_steer)) - joint_names.begin();
+		flw_pos_ = find (joint_names.begin(),joint_names.end(), string(joint_front_left_steer)) - joint_names.begin();
     return 0;
+  }else{
+		ROS_WARN("RbcarControllerClass::starting: joint_states are not being received");
+		return -1;
 	}
-  else return -1;
 }
 
 /// Controller update loop 

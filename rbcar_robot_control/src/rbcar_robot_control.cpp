@@ -58,7 +58,7 @@
 #define RBCAR_MIN_COMMAND_REC_FREQ   5.0
 #define RBCAR_MAX_COMMAND_REC_FREQ   150.0
 
-#define RBCAR_D_WHEELS_M            	1.65    // distance from front to back axis, car-like kinematics
+#define RBCAR_D_WHEELS_M            	2.5    // distance from front to back axis, car-like kinematics
 #define RBCAR_WHEEL_DIAMETER	    	0.470   // wheel avg diameter - may need calibration according to tyre pressure
 #define RBCAR_JOINT_STATES_TIME_WINDOW	1.0		// accepted time deviation to process joint_sttate
         

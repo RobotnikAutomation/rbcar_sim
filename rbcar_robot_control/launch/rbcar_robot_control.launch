@@ -4,7 +4,7 @@
   <arg name="publish_tf" default="true"/>
 
   <node name="rbcar_robot_control" pkg="rbcar_robot_control" type="rbcar_robot_control_node" output="screen">
-	<remap from="joint_states" to="rbcar/joint_states"/>
+	<!-- <remap from="joint_states" to="rbcar/joint_states"/> -->
 	<param name="model" value="rbcar"/>
 	<param name="publish_odom_tf" value="$(arg publish_tf)"/>
   </node> 

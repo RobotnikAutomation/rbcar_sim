@@ -1,4 +1,4 @@
-rbcar:
+
   left_front_shock_controller:
 #    type: velocity_controllers/JointVelocityController
     type: effort_controllers/JointEffortController

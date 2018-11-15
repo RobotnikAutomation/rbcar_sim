@@ -206,10 +206,10 @@ RbcarControllerClass(ros::NodeHandle h) : diagnostic_(),
   // Ackermann configuration - traction - topics
 
 
-  private_node_handle_.param<std::string>("frw_vel_topic", frw_vel_topic_, "rbcar/right_front_axle_controller/command");
-  private_node_handle_.param<std::string>("flw_vel_topic", flw_vel_topic_, "rbcar/left_front_axle_controller/command");
-  private_node_handle_.param<std::string>("blw_vel_topic", blw_vel_topic_, "rbcar/left_rear_axle_controller/command");
-  private_node_handle_.param<std::string>("brw_vel_topic", brw_vel_topic_, "rbcar/right_rear_axle_controller/command");
+  private_node_handle_.param<std::string>("frw_vel_topic", frw_vel_topic_, "right_front_axle_controller/command");
+  private_node_handle_.param<std::string>("flw_vel_topic", flw_vel_topic_, "left_front_axle_controller/command");
+  private_node_handle_.param<std::string>("blw_vel_topic", blw_vel_topic_, "left_rear_axle_controller/command");
+  private_node_handle_.param<std::string>("brw_vel_topic", brw_vel_topic_, "right_rear_axle_controller/command");
 
   // Ackermann configuration - traction - joint names 
   private_node_handle_.param<std::string>("joint_front_right_wheel", joint_front_right_wheel, "right_front_axle");
@@ -218,8 +218,8 @@ RbcarControllerClass(ros::NodeHandle h) : diagnostic_(),
   private_node_handle_.param<std::string>("joint_back_right_wheel", joint_back_right_wheel, "right_rear_axle");
 
   // Ackermann configuration - direction - topics
-  private_node_handle_.param<std::string>("frw_pos_topic", frw_pos_topic_, "rbcar/right_steering_joint_controller/command");
-  private_node_handle_.param<std::string>("flw_pos_topic", flw_pos_topic_, "rbcar/left_steering_joint_controller/command");
+  private_node_handle_.param<std::string>("frw_pos_topic", frw_pos_topic_, "right_steering_joint_controller/command");
+  private_node_handle_.param<std::string>("flw_pos_topic", flw_pos_topic_, "left_steering_joint_controller/command");
 
   private_node_handle_.param<std::string>("joint_front_right_steer", joint_front_right_steer, "right_steering_joint"); 
   private_node_handle_.param<std::string>("joint_front_left_steer", joint_front_left_steer, "left_steering_joint");

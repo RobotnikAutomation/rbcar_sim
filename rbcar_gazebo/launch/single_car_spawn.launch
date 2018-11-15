@@ -1,0 +1,13 @@
+<launch>
+
+    <arg name="init_pose"/>
+    <arg name="robot_name"/>
+
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+          args="$(arg init_pose) -urdf -param /robot_description -model $(arg robot_name)"/>
+
+    <include file="$(find rbcar_control)/launch/rbcar_control.launch" />
+
+    <include file="$(find rbcar_robot_control)/launch/rbcar_robot_control.launch"/>
+
+</launch>

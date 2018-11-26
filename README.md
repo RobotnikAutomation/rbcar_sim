@@ -1,3 +1,7 @@
+Edited to launch multiple rbcars on gazebo. 
+
+Dependencies of the original packages are: ackermann-msgs, joy, gazebo-ros-control, robotnik-sensors
+
 # rbcar_sim
 Robotnik Car Simulation Packages
 

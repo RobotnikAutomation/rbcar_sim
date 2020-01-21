@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package>
+  <name>rbcar_sim</name>
+  <version>1.0.4</version>
+  <description>The rbcar_sim package. It contains rbcar simulation packages</description>
+  
+  <maintainer email="jmnavarrete@robotnik.es">Juan Manuel Navarrete Carrascosa</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://wiki.ros.org/rbcar_sim</url>
+  <url type="repository">https://github.com/RobotnikAutomation/rbcar_sim</url>
+  <url type="bugtracker">https://github.com/RobotnikAutomation/rbcar_sim/issues</url>
+
+  <author email="rguzman@robotnik.es">Roberto Guzman</author>
+  
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <run_depend>rbcar_control</run_depend>
+  <run_depend>rbcar_gazebo</run_depend>
+  <run_depend>rbcar_joystick</run_depend>
+  <run_depend>rbcar_robot_control</run_depend>
+  <run_depend>rbcar_sim_bringup</run_depend>
+
+  <export><metapackage/></export>
+
+</package>

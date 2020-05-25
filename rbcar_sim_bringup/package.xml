@@ -4,6 +4,9 @@
   <version>1.0.4</version>
   <description>The rbcar_sim_bringup package</description>
 
+  <maintainer email="cvillar@robotnik.es">Carlos Villar</maintainer>
+  <maintainer email="rguzman@robotnik.es">Roberto Guzman</maintainer>
+  <maintainer email="rnavarro@robotnik.es">Román Navarro</maintainer>
   <maintainer email="jmnavarrete@robotnik.es">Juan Manuel Navarrete Carrascosa</maintainer>
 
   <license>BSD</license>

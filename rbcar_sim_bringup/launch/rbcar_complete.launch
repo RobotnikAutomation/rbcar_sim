@@ -12,15 +12,15 @@
   </include>
 
   <!-- start gazebo simulation -->
-  <include file="$(find rbcar_gazebo)/launch/rbcar_gazebo.launch"/>
+  <include file="$(find rbcar_gazebo)/launch/rbcar.launch"/>
 
   <!-- rbcar_control launch file -->
-  <include file="$(find rbcar_control)/launch/rbcar_control.launch"/>
+  <include file="$(find rbcar_control)/launch/simple_control.launch"/>
 
   <!-- rbcar_localization launch file -->
   <include file="$(find rbcar_localization)/launch/robot_localization_odom.launch"/>
 
-  <include file="$(find rbcar_localization)/launch/robot_localization_world.launch"/>
+  <!--include file="$(find rbcar_localization)/launch/robot_localization_world.launch"/-->
 
   <!-- rbcar_navigation launch file -->
   <!--include file="$(find rbcar_navigation)/launch/move_base.launch"/-->

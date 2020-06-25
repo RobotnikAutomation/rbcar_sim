@@ -19,9 +19,6 @@
   
   <run_depend>rbcar_control</run_depend>
   <run_depend>rbcar_gazebo</run_depend>
-  <run_depend>rbcar_joystick</run_depend>
-  <run_depend>rbcar_pad</run_depend>
-  <run_depend>rbcar_robot_control</run_depend>
   <run_depend>rbcar_sim_bringup</run_depend>
 
   <export><metapackage/></export>

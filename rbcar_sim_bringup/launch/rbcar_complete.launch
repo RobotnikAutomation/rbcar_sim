@@ -2,8 +2,10 @@
 <launch>
 
   <!-- GPS default position of Robotnik at Fuente del Jarro-->
-  <arg name="gps_latitude" default="39.5080331"/>
-  <arg name="gps_longitude" default="-0.4619816"/>
+  <arg name="gps_latitude" default="39.5080331" />
+  <arg name="gps_longitude" default="-0.4619816" />
+  <arg name="has_camera" default="true"/>
+  <arg name="world_name" default="plano" />
 
   <!-- rbcar_control launch file -->
   <include file="$(find rbcar_description)/launch/rbcar_state_robot.launch">
@@ -12,7 +14,10 @@
   </include>
 
   <!-- start gazebo simulation -->
-  <include file="$(find rbcar_gazebo)/launch/rbcar_gazebo.launch"/>
+  <include file="$(find rbcar_gazebo)/launch/rbcar_gazebo.launch">
+    <arg name="world_name" value="$(arg world_name)" />
+    <arg name="has_camera" value="$(arg has_camera)"/>
+  </include>
 
   <!-- rbcar_control launch file -->
   <include file="$(find rbcar_control)/launch/rbcar_control.launch"/>
@@ -23,6 +28,6 @@
   <include file="$(find rbcar_localization)/launch/robot_localization_world.launch"/>
 
   <!-- rbcar_navigation launch file -->
-  <!--include file="$(find rbcar_navigation)/launch/move_base.launch"/-->
+  <include file="$(find rbcar_navigation)/launch/move_base.launch"/>
 
 </launch>

@@ -4,8 +4,10 @@
   <!-- roslaunch arguments -->
   <arg name="debug" default="false"/>
   <arg name="gui" default="true"/>
-  <arg name="world" default="rbcar.world" />
+  <arg name="world_name" default="plano" />
+  <arg name="world" default="$(arg world_name).world" />
   <arg name="world_path" default="$(find rbcar_gazebo)/worlds" />
+  <arg name="has_camera" default="false"/>
 
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -25,5 +27,7 @@
         <!---J left_rear_shock -0.08913882430419398-->
         <!---J right_front_shock -0.08913882430419398-->
         <!---J right_rear_shock -0.08913882430419398-->
+
+  <include if="$(arg has_camera)" file="$(find axis_camera_ptz)/launch/axis_gazebo.launch" />
 
 </launch>

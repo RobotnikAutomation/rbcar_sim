@@ -39,66 +39,53 @@
     <include>
       <uri>model://sun</uri>
     </include>
-    <include>
-      <uri>model://vrc_driving_terrain</uri>
-    </include>
-    <!-- A ground plane -->
-    <!--<include>-->
-      <!--<uri>model://ground_plane</uri>-->
-    <!--</include>-->
-    <model name='unit_box'>
-      <pose frame=''>7.08674 0 0.075 0 -0 0</pose>
+    <model name='ground_plane'>
+      <static>1</static>
       <link name='link'>
-        <inertial>
-          <mass>1</mass>
-          <inertia>
-            <ixx>0.166667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.166667</iyy>
-            <iyz>0</iyz>
-            <izz>0.166667</izz>
-          </inertia>
-        </inertial>
         <collision name='collision'>
           <geometry>
-            <box>
-              <!--<size>1 1 1</size>-->
-              <size>0.5 7.21808 0.15</size>
-            </box>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
           </geometry>
-          <max_contacts>10</max_contacts>
           <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
             <contact>
               <ode/>
             </contact>
             <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
           </surface>
+          <max_contacts>10</max_contacts>
         </collision>
         <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
           <geometry>
-            <box>
-              <!--<size>1 1 1</size>-->
-              <size>0.5 7.21808 0.15</size>
-            </box>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>4000 4000</size>
+            </plane>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
               <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
             </script>
           </material>
         </visual>
         <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <static>true</static>
     </model>
+
   </world>
 </sdf>

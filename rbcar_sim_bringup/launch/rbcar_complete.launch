@@ -5,7 +5,7 @@
   <arg name="gps_latitude" default="39.5080331" />
   <arg name="gps_longitude" default="-0.4619816" />
   <arg name="has_camera" default="true"/>
-  <arg name="world_name" default="plano" />
+  <arg name="world_name" default="plane" />
 
   <!-- rbcar_control launch file -->
   <include file="$(find rbcar_description)/launch/rbcar_state_robot.launch">
@@ -20,7 +20,9 @@
   </include>
 
   <!-- rbcar_control launch file -->
-  <include file="$(find rbcar_control)/launch/rbcar_control.launch"/>
+  <include file="$(find rbcar_control)/launch/rbcar_control.launch">
+    <arg name="publish_odom" value="false"/>
+  </include>
 
   <!-- rbcar_localization launch file -->
   <include file="$(find rbcar_localization)/launch/robot_localization_odom.launch"/>
@@ -29,5 +31,6 @@
 
   <!-- rbcar_navigation launch file -->
   <include file="$(find rbcar_navigation)/launch/move_base.launch"/>
+  <node pkg="tf" type="static_transform_publisher" name="w2m" args="0 0 0 0 0 0 world map 100" />
 
 </launch>

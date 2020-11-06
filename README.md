@@ -1,16 +1,45 @@
-# rbcar_sim
-Robotnik Car Simulation Packages
+Robotnik Rbcar
+==============
 
-The rbcar_sim is composed by the following packages:
+Packages for the simulation of the Rbcar robot
 
-## rbcar_control
+<p align="center">
+  <img src="https://github.com/RobotnikAutomation/rbcar_sim/blob/melodic-devel/rbcar.jpg" width="275" />
+  <img src="https://github.com/RobotnikAutomation/rbcar_sim/blob/melodic-devel/rbcar_gazebo.png" width="275" />
+</p>
 
-This package contains all the configuration files needed simulate the motor controllers in Gazebo (using skid_steering plugin).
 
-## rbcar_gazebo
+<h1> Packages </h1>
+<h2>rbcar_gazebo</h2>
 
-It contains the launch and config files to launch Gazebo with the robot.
+This package contains the configuration files and worlds to launch the Gazebo environment along with the simulated robot.
 
-## rbcar_sim_bringup
+<h2>rbcar_sim_bringup</h2>
 
-It contains several launch files in order to launch some or all the components of the robot.
+Launch files that launch the complete simulation of the robot/s.
+
+<h1>Simulating RBcar</h1>
+1. Install the following dependencies:
+```
+sudo apt-get update
+sudo apt-get install -y python-wstool python3-rosdep
+```
+2. Create a workspace and clone the repository:
+```
+mkdir ~/catkin_ws
+cd ~/catkin_ws
+wstool init src
+wstool merge -t src https://raw.githubusercontent.com/rbcar_sim/tree/melodic-devel/rbcar_sim.rosinstall
+wstool update -t src
+rosdep install --from-paths src --ignore-src -y
+```
+3. Compile:
+```
+cd ~/catkin_ws
+catkin build
+source ~/catkin_ws/devel/setup.bash
+```
+4. Run:
+```
+roslaunch rbcar_sim_bringup rbcar_complete.launch
+```

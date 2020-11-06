@@ -1,4 +1,4 @@
-- git: {local-name: axis_camera_ptz, uri: 'https://github.com/RobotnikAutomation/axis_camera_pyz.git', version: 'master'}
+- git: {local-name: axis_camera_ptz, uri: 'https://github.com/RobotnikAutomation/axis_camera_ptz.git', version: 'master'}
 - git: {local-name: navigation_experimental, uri: 'https://github.com/RobotnikAutomation/navigation_experimental', version: 'melodic-sbpl-devel'}
 - git: {local-name: rbcar_sim, uri: 'https://github.com/RobotnikAutomation/rbcar_sim', version: 'melodic-devel'}
 - git: {local-name: robotnik_sensors, uri: 'https://github.com/RobotnikAutomation/robotnik_sensors', version: 'melodic-devel'}

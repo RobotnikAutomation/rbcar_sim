@@ -35,9 +35,10 @@ wstool merge -t src https://raw.githubusercontent.com/RobotnikAutomation/rbcar_s
 wstool update -t src
 rosdep install --from-paths src --ignore-src -y
 ```
-3. Install ackermann controller:
+3. Install ackermann controller and robotnik_msgs:
 ```
- sudo dpkg -i src/rbcar_common/rbcar_control/lib/ros-melodic-ackermann-drive-controller_0.0.0-0bionic_amd64.deb 
+sudo dpkg -i src/rbcar_common/rbcar_control/lib/ros-melodic-robotnik-msgs_1.1.0-0bionic_amd64.deb
+sudo dpkg -i src/rbcar_common/rbcar_control/lib/ros-melodic-ackermann-drive-controller_0.0.0-0bionic_amd64.deb 
 ```
 
 4. Compile:

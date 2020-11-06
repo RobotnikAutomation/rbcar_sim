@@ -31,7 +31,7 @@ sudo apt-get install -y python-wstool python3-rosdep
 mkdir ~/catkin_ws
 cd ~/catkin_ws
 wstool init src
-wstool merge -t src https://raw.githubusercontent.com/rbcar_sim/tree/melodic-devel/rbcar_sim.rosinstall
+wstool merge -t src https://raw.githubusercontent.com/RobotnikAutomation/rbcar_sim/melodic-devel/rbcar_sim.rosinstall
 wstool update -t src
 rosdep install --from-paths src --ignore-src -y
 ```

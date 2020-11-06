@@ -4,8 +4,8 @@ Robotnik Rbcar
 Packages for the simulation of the Rbcar robot
 
 <p align="center">
-  <img src="https://github.com/RobotnikAutomation/rbcar_sim/blob/melodic-devel/rbcar.jpg" width="275" />
-  <img src="https://github.com/RobotnikAutomation/rbcar_sim/blob/melodic-devel/rbcar_gazebo.png" width="275" />
+  <img src="https://github.com/RobotnikAutomation/rbcar_sim/blob/melodic-devel/rbcar.jpg" height="275" />
+  <img src="https://github.com/RobotnikAutomation/rbcar_sim/blob/melodic-devel/rbcar_gazebo.png" height="275" />
 </p>
 
 

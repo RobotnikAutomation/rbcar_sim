@@ -23,7 +23,7 @@ Launch files that launch the complete simulation of the robot/s.
 1. Install the following dependencies:
 ```
 sudo apt-get update
-sudo apt-get install -y python-wstool python3-rosdep
+sudo apt-get install -y python-wstool
 ```
 
 2. Create a workspace and clone the repository:

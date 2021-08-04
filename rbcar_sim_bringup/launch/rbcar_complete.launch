@@ -1,36 +1,62 @@
 <?xml version="1.0"?>
 <launch>
 
+  <arg name="id_robot" default="$(optenv ROBOT_ID robot)"/>
+  <arg name="prefix" default="$(arg id_robot)_" />
+
   <!-- GPS default position of Robotnik at Fuente del Jarro-->
   <arg name="gps_latitude" default="39.5080331" />
   <arg name="gps_longitude" default="-0.4619816" />
   <arg name="has_camera" default="true"/>
   <arg name="world_name" default="plane" />
+  <arg name="x_init_pose" default="0"/>
+  <arg name="y_init_pose" default="0"/>
+  <arg name="z_init_pose" default="0"/>
+  <arg name="init_yaw" default="0"/>
 
-  <!-- rbcar_control launch file -->
-  <include file="$(find rbcar_description)/launch/rbcar_state_robot.launch">
-    <arg name="gps_latitude" value="$(arg gps_latitude)"/>
-    <arg name="gps_longitude" value="$(arg gps_longitude)"/>
-  </include>
+
+  <group ns="$(arg id_robot)">
+    <!-- rbcar_control launch file -->
+    <include file="$(find rbcar_description)/launch/rbcar_state_robot.launch">
+      <arg name="gps_latitude" value="$(arg gps_latitude)"/>
+      <arg name="gps_longitude" value="$(arg gps_longitude)"/>
+    </include>
+
+    <!-- Spawner model into gazebo -->
+		<node name="urdf_spawner_robot" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-x $(arg x_init_pose) -y $(arg y_init_pose) -z $(arg z_init_pose) -Y $(arg init_yaw) -urdf -param robot_description -model $(arg id_robot)" />
+
+
+    <!-- rbcar_control launch file -->
+    <include file="$(find rbcar_control)/launch/rbcar_control.launch">
+      <arg name="publish_odom" value="false"/>
+      <arg name="prefix" value="$(arg prefix)"/>
+    </include>
+
+    <!-- rbcar_localization launch file -->
+    <include file="$(find rbcar_localization)/launch/robot_localization_odom.launch">
+      <arg name="prefix" value="$(arg prefix)"/>
+    </include>
+
+    <include file="$(find rbcar_localization)/launch/robot_localization_world.launch">
+      <arg name="prefix" value="$(arg prefix)"/>
+    </include>
+
+    <!-- rbcar_navigation launch file -->
+    <include file="$(find rbcar_navigation)/launch/move_base.launch">
+      <arg name="prefix" value="$(arg prefix)"/>
+    </include>
+
+    <node pkg="tf" type="static_transform_publisher" name="w2m" args="0 0 0 0 0 0 world map 100" />
+
+  </group>
+
 
   <!-- start gazebo simulation -->
   <include file="$(find rbcar_gazebo)/launch/rbcar_gazebo.launch">
     <arg name="world_name" value="$(arg world_name)" />
-    <arg name="has_camera" value="$(arg has_camera)"/>
   </include>
 
-  <!-- rbcar_control launch file -->
-  <include file="$(find rbcar_control)/launch/rbcar_control.launch">
-    <arg name="publish_odom" value="false"/>
-  </include>
 
-  <!-- rbcar_localization launch file -->
-  <include file="$(find rbcar_localization)/launch/robot_localization_odom.launch"/>
-
-  <include file="$(find rbcar_localization)/launch/robot_localization_world.launch"/>
-
-  <!-- rbcar_navigation launch file -->
-  <include file="$(find rbcar_navigation)/launch/move_base.launch"/>
-  <node pkg="tf" type="static_transform_publisher" name="w2m" args="0 0 0 0 0 0 world map 100" />
+    <!--include if="$(arg has_camera)" file="$(find axis_camera_ptz)/launch/axis_gazebo.launch" /-->
 
 </launch>

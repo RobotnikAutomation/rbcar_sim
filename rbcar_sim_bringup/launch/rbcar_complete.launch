@@ -1,36 +1,60 @@
 <?xml version="1.0"?>
 <launch>
 
+  <arg name="id_robot" default="$(optenv ROBOT_ID robot)"/>
+  <arg name="prefix" default="$(arg id_robot)_"/>
+  <arg name="x_init_pose" default="$(optenv ROBOT_SIM_X_INIT_POSE 0)"/>
+  <arg name="y_init_pose" default="$(optenv ROBOT_SIM_Y_INIT_POSE 0)"/>
+  <arg name="z_init_pose" default="$(optenv ROBOT_SIM_Z_INIT_POSE 0)"/>
+
   <!-- GPS default position of Robotnik at Fuente del Jarro-->
-  <arg name="gps_latitude" default="39.5080331" />
-  <arg name="gps_longitude" default="-0.4619816" />
+  <arg name="gps_latitude" default="$(optenv ROBOT_SIM_GPS_LATITUDE 39.5080331)" />
+  <arg name="gps_longitude" default="$(optenv ROBOT_SIM_GPS_LONGITUDE -0.4619816)" />
+  
+  <arg name="use_gpu_for_simulation" default="$(optenv ROBOT_SIM_USE_GPU_FOR_SIMULATION true)" />
   <arg name="has_camera" default="true"/>
-  <arg name="world_name" default="plane" />
 
-  <!-- rbcar_control launch file -->
-  <include file="$(find rbcar_description)/launch/rbcar_state_robot.launch">
-    <arg name="gps_latitude" value="$(arg gps_latitude)"/>
-    <arg name="gps_longitude" value="$(arg gps_longitude)"/>
-  </include>
+  <arg name="robot_xacro" default="$(optenv ROBOT_XACRO versions/rbcar_roborder.urdf.xacro)"/>
+  <arg name="robot_xacro_path" default="$(find rbcar_description)/robots/$(arg robot_xacro)" />
 
-  <!-- start gazebo simulation -->
+
+  <arg name="world_name" default="plano" />
+  <arg name="world_path" default="$(find rbcar_gazebo)/worlds" />
+
+  <arg name="launch_odom_localization" default="true"/>
+  <arg name="launch_world_localization" default="true"/>
+
+  
   <include file="$(find rbcar_gazebo)/launch/rbcar_gazebo.launch">
-    <arg name="world_name" value="$(arg world_name)" />
+    <arg name="id_robot" value="$(arg id_robot)"/>
+    <arg name="prefix" value="$(arg prefix)"/>
+    <arg name="x_init_pose" value="$(arg x_init_pose)"/>
+    <arg name="y_init_pose" value="$(arg y_init_pose)"/>
+    <arg name="z_init_pose" value="$(arg z_init_pose)"/>
+    <arg name="gps_latitude" value="$(arg gps_latitude)"/>  
+    <arg name="gps_longitude" value="$(arg gps_longitude)"/>
+    <arg name="use_gpu_for_simulation" value="$(arg use_gpu_for_simulation)"/>
     <arg name="has_camera" value="$(arg has_camera)"/>
+    <arg name="robot_xacro" value="$(arg robot_xacro)"/>
+    <arg name="robot_xacro_path" value="$(arg robot_xacro_path)"/>
+    <arg name="world_name" value="$(arg world_name)"/>
+    <arg name="world_path" value="$(arg world_path)"/>
+    <arg name="launch_odom_localization" value="$(arg launch_odom_localization)"/>
+    <arg name="launch_world_localization" value="$(arg launch_world_localization)"/>
+
+
   </include>
 
-  <!-- rbcar_control launch file -->
-  <include file="$(find rbcar_control)/launch/rbcar_control.launch">
-    <arg name="publish_odom" value="false"/>
-  </include>
+  <group ns="$(arg id_robot)">
+  	
+    <!-- rbcar_localization launch file -->
+    <!--include file="$(find rbcar_localization)/launch/robot_localization_odom.launch"/>
 
-  <!-- rbcar_localization launch file -->
-  <include file="$(find rbcar_localization)/launch/robot_localization_odom.launch"/>
+    <include file="$(find rbcar_localization)/launch/robot_localization_world.launch"/-->
 
-  <include file="$(find rbcar_localization)/launch/robot_localization_world.launch"/>
-
-  <!-- rbcar_navigation launch file -->
-  <include file="$(find rbcar_navigation)/launch/move_base.launch"/>
-  <node pkg="tf" type="static_transform_publisher" name="w2m" args="0 0 0 0 0 0 world map 100" />
+    <!-- rbcar_navigation launch file -->
+    <!--include file="$(find rbcar_navigation)/launch/move_base.launch"/>
+    <node pkg="tf" type="static_transform_publisher" name="w2m" args="0 0 0 0 0 0 world map 100" /-->
+  </group>
 
 </launch>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="gazebo_debug" default="false"/>
+    <arg name="gazebo_gui" default="true"/>
+    <arg name="gazebo_paused" default="false"/>
+    <arg name="use_sim_time" default="true"/>
+    <arg name="launch_rviz" default="true"/>
+    <arg name="world_name" default="plano"/>
+    <arg name="world" default="$(arg world_name).world" />
+    <arg name="world_path" default="$(find rbcar_gazebo)/worlds" />
+    <arg name="file_rviz" default="rbcar"/>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg world_path)/$(arg world)"/>
+        <arg name="debug" value="$(arg gazebo_debug)" />
+        <arg name="gui" value="$(arg gazebo_gui)" />
+        <arg name="paused" value="$(arg gazebo_paused)"/>
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+        <arg name="headless" value="false"/>
+    </include>
+
+    <node if="$(arg launch_rviz)" name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find rbcar_gazebo)/rviz/$(arg file_rviz).rviz"/>
+</launch>

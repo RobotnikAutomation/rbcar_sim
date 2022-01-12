@@ -17,9 +17,10 @@
   <arg name="robot_xacro" default="$(optenv ROBOT_XACRO versions/rbcar_roborder.urdf.xacro)"/>
   <arg name="robot_xacro_path" default="$(find rbcar_description)/robots/$(arg robot_xacro)" />
 
-
+  <arg name="start_world" default="true"/>
   <arg name="world_name" default="plano" />
   <arg name="world_path" default="$(find rbcar_gazebo)/worlds" />
+  <arg name="launch_rviz" default="true"/>
 
   <arg name="launch_odom_localization" default="true"/>
   <arg name="launch_world_localization" default="true"/>
@@ -37,8 +38,10 @@
     <arg name="has_camera" value="$(arg has_camera)"/>
     <arg name="robot_xacro" value="$(arg robot_xacro)"/>
     <arg name="robot_xacro_path" value="$(arg robot_xacro_path)"/>
+    <arg name="start_world" value="$(arg start_world)"/>
     <arg name="world_name" value="$(arg world_name)"/>
     <arg name="world_path" value="$(arg world_path)"/>
+    <arg name="launch_rviz" value="$(arg launch_rviz)"/>
     <arg name="launch_odom_localization" value="$(arg launch_odom_localization)"/>
     <arg name="launch_world_localization" value="$(arg launch_world_localization)"/>
 

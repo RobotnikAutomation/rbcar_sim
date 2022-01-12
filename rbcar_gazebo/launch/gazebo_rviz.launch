@@ -6,10 +6,11 @@
     <arg name="use_sim_time" default="true"/>
     <arg name="launch_rviz" default="true"/>
     <arg name="world_name" default="plano"/>
+    <arg name="start_world" default="true"/>
     <arg name="world" default="$(arg world_name).world" />
     <arg name="world_path" default="$(find rbcar_gazebo)/worlds" />
     <arg name="file_rviz" default="rbcar"/>
-    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <include if="$(arg start_world)" file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value="$(arg world_path)/$(arg world)"/>
         <arg name="debug" value="$(arg gazebo_debug)" />
         <arg name="gui" value="$(arg gazebo_gui)" />

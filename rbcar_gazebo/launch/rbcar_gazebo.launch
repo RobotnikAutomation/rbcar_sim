@@ -16,6 +16,7 @@
   <arg name="use_gpu_for_simulation" default="$(optenv ROBOT_SIM_USE_GPU_FOR_SIMULATION true)" />
   <arg name="has_camera" default="true"/>
 
+  <arg name="start_world" default="true"/>
   <arg name="launch_odom_localization" default="true"/>
   <arg name="launch_world_localization" default="true"/>
 
@@ -54,6 +55,7 @@
     <arg name="gazebo_paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="launch_rviz" value="$(arg launch_rviz)"/>
+    <arg name="start_world" value="$(arg start_world)"/>
     <arg name="world_name" value="$(arg world_name)"/>
     <arg name="world_path" value="$(arg world_path)"/>
   </include>

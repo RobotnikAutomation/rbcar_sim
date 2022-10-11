@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+
+<launch>
+    <arg name="id_robot" default="$(optenv ROBOT_ID robot)"/>
+    <arg name="prefix" default="$(arg id_robot)_"/>
+    <arg name="x_init_pose" default="$(optenv ROBOT_SIM_X_INIT_POSE 0)"/>
+    <arg name="y_init_pose" default="$(optenv ROBOT_SIM_Y_INIT_POSE 0)"/>
+    <arg name="z_init_pose" default="$(optenv ROBOT_SIM_Z_INIT_POSE 0)"/>
+    <!--GPS default position of Robotnik at Fuente del Jarro -->
+    <arg name="gps_latitude" default="$(optenv ROBOT_SIM_GPS_LATITUDE 39.5080331)" />
+    <arg name="gps_longitude" default="$(optenv ROBOT_SIM_GPS_LONGITUDE -0.4619816)" />
+
+    <arg name="use_gpu_for_simulation" default="$(optenv ROBOT_SIM_USE_GPU_FOR_SIMULATION true)" />
+    <arg name="has_camera" default="true"/>
+
+    <arg name="robot_xacro" default="$(optenv ROBOT_XACRO versions/rbcar_roborder.urdf.xacro)"/>
+    <arg name="robot_xacro_path" default="$(find rbcar_description)/robots/$(arg robot_xacro)" />
+
+    <arg name="launch_odom_localization" default="true"/>
+    <arg name="launch_world_localization" default="true"/>
+    <arg name="launch_twist_mux" default="true"/>
+
+
+    <group ns="$(arg id_robot)">
+        <param name="robot_description" command="$(find xacro)/xacro '$(arg robot_xacro_path)' prefix:=$(arg prefix) gpu:=$(arg use_gpu_for_simulation)  gps_latitude:='$(arg gps_latitude)' gps_longitude:='$(arg gps_longitude) --inorder'" />
+    
+        <!-- Combine joint values -->
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+        <!-- Call a python script to the run a service call to gazebo_ros to spawn a URDF robot -->
+        <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+            args="  
+                -x $(arg x_init_pose)
+                -y $(arg y_init_pose)
+                -z $(arg z_init_pose)
+                -urdf  
+                -param robot_description
+                -model $(arg id_robot)       
+            "
+        />
+
+        <include if="$(arg has_camera)" file="$(find axis_camera_ptz)/launch/axis_gazebo.launch" />
+
+        <!-- rbcar_control launch file -->
+        <include file="$(find rbcar_control)/launch/rbcar_control.launch">
+            <arg name="id_robot" value="$(arg id_robot)"/>
+            <arg name="odom_broadcast_tf" value="false"/>
+        </include>
+
+        <!-- twist_mux -->
+        <include if="$(arg launch_twist_mux)" file="$(find rbcar_control)/launch/twist_mux.launch"/>
+
+        <!-- rbcar_localization launch file -->
+        <include if="$(arg launch_odom_localization)" file="$(find rbcar_localization)/launch/robot_localization_odom.launch">
+            <arg name="id_robot" value="$(arg id_robot)"/>
+        </include>
+        <include if="$(arg launch_world_localization)" file="$(find rbcar_localization)/launch/robot_localization_world.launch">
+            <arg name="id_robot" value="$(arg id_robot)"/>
+        </include>
+
+    </group>
+</launch>

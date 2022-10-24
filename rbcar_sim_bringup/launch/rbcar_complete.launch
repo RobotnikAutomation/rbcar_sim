@@ -23,7 +23,7 @@
 
   <arg name="launch_odom_localization" default="true"/>
   <arg name="launch_world_localization" default="true"/>
-  <arg name="launch_twist_mux" value="true"/>
+  <arg name="launch_twist_mux" default="true"/>
 
   
   <include file="$(find rbcar_gazebo)/launch/rbcar_gazebo.launch">

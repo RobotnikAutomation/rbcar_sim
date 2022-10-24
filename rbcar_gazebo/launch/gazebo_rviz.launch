@@ -5,7 +5,7 @@
     <arg name="gazebo_paused" default="false"/>
     <arg name="use_sim_time" default="true"/>
     <arg name="launch_rviz" default="true"/>
-    <arg name="world_name" default="plano"/>
+    <arg name="world_name" default="plane"/>
     <arg name="world" default="$(arg world_name).world" />
     <arg name="world_path" default="$(find rbcar_gazebo)/worlds" />
     <arg name="file_rviz" default="rbcar"/>

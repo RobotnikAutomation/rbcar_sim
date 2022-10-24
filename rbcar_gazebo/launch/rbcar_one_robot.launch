@@ -45,10 +45,9 @@
         <include file="$(find rbcar_control)/launch/rbcar_control.launch">
             <arg name="id_robot" value="$(arg id_robot)"/>
             <arg name="odom_broadcast_tf" value="false"/>
+            <arg name="launch_twist_mux" value="$(arg launch_twist_mux)"/>
         </include>
 
-        <!-- twist_mux -->
-        <include if="$(arg launch_twist_mux)" file="$(find rbcar_control)/launch/twist_mux.launch"/>
 
         <!-- rbcar_localization launch file -->
         <include if="$(arg launch_odom_localization)" file="$(find rbcar_localization)/launch/robot_localization_odom.launch">

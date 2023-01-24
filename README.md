@@ -23,7 +23,7 @@ Launch files that launch the complete simulation of the robot/s.
 1. Install the following dependencies:
 ```
 sudo apt-get update
-sudo apt-get install -y python-wstool
+sudo apt-get install -y python3-wstool
 ```
 
 2. Create a workspace and clone the repository:
@@ -31,14 +31,14 @@ sudo apt-get install -y python-wstool
 mkdir ~/catkin_ws
 cd ~/catkin_ws
 wstool init src
-wstool merge -t src https://raw.githubusercontent.com/RobotnikAutomation/rbcar_sim/melodic-devel/rbcar_sim.rosinstall
+wstool merge -t src https://raw.githubusercontent.com/RobotnikAutomation/rbcar_sim/noetic-devel/rbcar_sim.rosinstall
 wstool update -t src
-rosdep install --from-paths src --ignore-src -y
+rosdep install --from-paths src --ignore-src -y -r
 ```
 3. Install ackermann controller and robotnik_msgs:
 ```
-sudo dpkg -i src/rbcar_common/rbcar_control/lib/ros-melodic-robotnik-msgs_1.1.0-0bionic_amd64.deb
-sudo dpkg -i src/rbcar_common/rbcar_control/lib/ros-melodic-ackermann-drive-controller_0.0.0-0bionic_amd64.deb 
+sudo dpkg -i src/rbcar_common/rbcar_control/lib/ros-noetic-robotnik-msgs_2.2.0-0focal_amd64.deb
+sudo dpkg -i src/rbcar_common/rbcar_control/lib/ros-noetic-ackermann-drive-controller_0.0.0-0focal_amd64.deb 
 ```
 
 4. Compile:

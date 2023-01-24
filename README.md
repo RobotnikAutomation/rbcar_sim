@@ -28,8 +28,8 @@ sudo apt-get install -y python3-wstool
 
 2. Create a workspace and clone the repository:
 ```
-mkdir ~/catkin_ws
-cd ~/catkin_ws
+mkdir catkin_ws
+cd catkin_ws
 wstool init src
 wstool merge -t src https://raw.githubusercontent.com/RobotnikAutomation/rbcar_sim/noetic-devel/rbcar_sim.rosinstall
 wstool update -t src
@@ -43,9 +43,9 @@ sudo dpkg -i src/rbcar_common/rbcar_control/lib/ros-noetic-ackermann-drive-contr
 
 4. Compile:
 ```
-cd ~/catkin_ws
+cd catkin_ws
 catkin build
-source ~/catkin_ws/devel/setup.bash
+source devel/setup.bash
 ```
 5. Run:
 ```

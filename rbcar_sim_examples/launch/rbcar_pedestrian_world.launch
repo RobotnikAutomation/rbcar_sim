@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- GPS default position of Robotnik at Fuente del Jarro-->
+  <arg name="gps_latitude" default="39.5080331" />
+  <arg name="gps_longitude" default="-0.4619816" />
+  <arg name="has_camera" default="true"/>
+  <arg name="world_name" default="simple_pedestrians_cars" />
+
+  <!-- rbcar_control launch file -->
+  <include file="$(find rbcar_description)/launch/rbcar_state_robot.launch">
+    <arg name="gps_latitude" value="$(arg gps_latitude)"/>
+    <arg name="gps_longitude" value="$(arg gps_longitude)"/>
+  </include>
+
+  <!-- start gazebo simulation -->
+  <include file="$(find rbcar_gazebo)/launch/rbcar_gazebo.launch">
+    <arg name="world_name" value="$(arg world_name)" />
+    <arg name="has_camera" value="$(arg has_camera)"/>
+  </include>
+
+  <!-- rbcar_control launch file -->
+  <!-- <include file="$(find rbcar_control)/launch/rbcar_control.launch">
+    <arg name="publish_odom" value="false"/>
+  </include> -->
+
+  <include file="$(find rbcar_control)/launch/rbcar_control_alternative.launch">
+  </include>
+
+
+  <include file="$(find rbcar_sim_examples)/launch/start_rviz.launch"/>
+
+</launch>

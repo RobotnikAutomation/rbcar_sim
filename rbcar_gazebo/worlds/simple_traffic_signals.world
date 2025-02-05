@@ -1,0 +1,178 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <world name="default">
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>-0.23904 -19.0487 0.901345 -0 0.071456 1.52819</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+
+    <physics type="ode">
+      <gravity>0 0 -9.81</gravity>
+      <ode>
+        <solver>
+          <type>world</type>
+          <iters>500</iters>
+          <sor>1.0</sor>
+        </solver>
+        <constraints>
+          <cfm>0.0</cfm>
+          <erp>0.2</erp>
+          <contact_max_correcting_vel>0.1</contact_max_correcting_vel>
+          <contact_surface_layer>0.0</contact_surface_layer>
+        </constraints>
+      </ode>
+      <real_time_update_rate>1000</real_time_update_rate>
+      <max_step_size>0.001</max_step_size>
+    </physics>
+
+    <include>
+      <uri>model://speed_limit_80</uri>
+      <name>speed_limit_80_1</name>
+      <pose>9.634830 2.800253 -0.154945 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://speed_limit_80</uri>
+      <name>speed_limit_80_2</name>
+      <pose>3.093306 -19.901224 -0.154945 0 0 -1.580482</pose>
+    </include>
+
+        <include>
+      <uri>model://traffic_light</uri>
+      <name>traffic_light1</name>
+      <pose>2.725098 2.800253 -1.0 0 0 1.578703</pose>
+    </include>
+
+    <include>
+      <uri>model://traffic_light</uri>
+      <name>traffic_light2</name>
+      <pose>2.687547 -3.509005 -1.0 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://traffic_light</uri>
+      <name>traffic_light3</name>
+      <pose>2.703650 2.435987 -1.0 0 0 -1.545811</pose>
+    </include>
+
+    <include>
+      <uri>model://traffic_light</uri>
+      <name>traffic_light4</name>
+      <pose>-2.291075 3.330095 -1.0 0 0 2.941129</pose>
+    </include>
+
+    <include>
+      <uri>model://traffic_light</uri>
+      <name>traffic_light5</name>
+      <pose>11.196165 2.800253 -1.0 0 0 0</pose>
+    </include>
+
+    <!-- PLUGINS -->
+    <plugin name="traffic_light_manager_world_plugin" filename="libtraffic_light_manager_world_plugin.so">
+      <update_frequency>1.0</update_frequency>
+      <model_traffic_lights>traffic_light1</model_traffic_lights>
+    </plugin>
+
+    <include>
+      <uri>model://ground_plane</uri>
+      <pose>0 0 0 0 0 0</pose>
+    </include>  
+
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <light name='user_point_light_0' type='point'>
+      <pose frame=''>7.1 0.0 3.0 0 0 0</pose>
+      <diffuse>0.2 0.2 0.2 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>10</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+
+    <light name='user_point_light_1' type='point'>
+      <pose frame=''>-7.1 0.0 3.0 0 0 0</pose>
+      <diffuse>0.2 0.2 0.2 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>10</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+
+    <light name='user_point_light_2' type='point'>
+      <pose frame=''>7.1 -16.0 3.0 0 0 0</pose>
+      <diffuse>0.2 0.2 0.2 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>10</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+
+
+    <light name='user_point_light_3' type='point'>
+      <pose frame=''>-7.1 -16.0 3.0 0 0 0</pose>
+      <diffuse>0.2 0.2 0.2 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>10.0</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+
+
+    <light name='user_point_light_4' type='point'>
+      <pose frame=''>7.1 13.0 3.0 0 0 0</pose>
+      <diffuse>0.2 0.2 0.2 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>10.0</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+
+    <light name='user_point_light_5' type='point'>
+      <pose frame=''>-7.1 13.0 3.0 0 0 0</pose>
+      <diffuse>0.2 0.2 0.2 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>10</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+
+  
+    
+  </world>
+</sdf>

@@ -1,0 +1,112 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <world name="default">
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>-0.23904 -19.0487 0.901345 -0 0.071456 1.52819</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+
+    <physics type="ode">
+      <gravity>0 0 -9.81</gravity>
+      <ode>
+        <solver>
+          <type>world</type>
+          <iters>500</iters>
+          <sor>1.0</sor>
+        </solver>
+        <constraints>
+          <cfm>0.0</cfm>
+          <erp>0.2</erp>
+          <contact_max_correcting_vel>0.1</contact_max_correcting_vel>
+          <contact_surface_layer>0.0</contact_surface_layer>
+        </constraints>
+      </ode>
+      <real_time_update_rate>1000</real_time_update_rate>
+      <max_step_size>0.001</max_step_size>
+    </physics>
+
+
+    <include>
+      <uri>model://loop_freeway</uri>
+      <name>loop_freeway</name>
+      <pose>0 27.928473 0.01 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://ground_plane</uri>
+      <pose>0 0 0 0 0 0</pose>
+    </include>  
+
+    <include>
+      <uri>model://speed_limit_80</uri>
+      <name>speed_limit_80_1</name>
+      <pose>9.634830 4.317166 -0.154945 0 0 0.397512</pose>
+    </include>
+
+    <include>
+      <uri>model://traffic_light</uri>
+      <name>traffic_light1</name>
+      <pose>2.325000 53.401695 -1.0 0 0 1.578703</pose>
+    </include>
+
+    <include>
+      <uri>model://traffic_light</uri>
+      <name>traffic_light2</name>
+      <pose>-25.008516 26.916649 -1.0 0 0 -2.940904</pose>
+    </include>
+
+    <include>
+      <uri>model://traffic_light</uri>
+      <name>traffic_light3</name>
+      <pose>2.703650 2.435987 -1.0 0 0 -1.545811</pose>
+    </include>
+
+    <include>
+      <uri>model://traffic_light</uri>
+      <name>traffic_light4</name>
+      <pose>25.657097 25.981258 -1.0 0 0 -0.044404</pose>
+    </include>
+
+
+    <include>
+      <uri>model://car_passat</uri>
+      <name>car_passat1</name>
+      <pose>-1.668908 3.828455 0.320109 0 0 -1.690554</pose>
+    </include>
+  
+  <include>
+      <uri>model://old_car</uri>
+      <name>old_car1</name>
+      <pose>-6.198360 50.704773 -0.011254 0 0 3.125236</pose>
+    </include>
+
+    <include>
+      <uri>model://person_ken</uri>
+      <name>person_ken1</name>
+      <pose>7.524980 3.617249 0.148014 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://person_ken</uri>
+      <name>person_ken2</name>
+      <pose>8.372791 -0.742244 0.046237 0 0 -1.894694</pose>
+    </include>
+
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+
+    <!-- PLUGINS -->
+    <plugin name="traffic_light_manager_world_plugin" filename="libtraffic_light_manager_world_plugin.so">
+      <update_frequency>1.0</update_frequency>
+      <model_traffic_lights>traffic_light1</model_traffic_lights>
+    </plugin>
+  
+    
+  </world>
+</sdf>

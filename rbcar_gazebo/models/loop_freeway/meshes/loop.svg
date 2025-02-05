@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.2 (1.0.2+r75+1)"
+   sodipodi:docname="loop.svg"
+   inkscape:export-filename="/home/tgrip/TheConstruct/ros_playground/box_car_rb_course_ws/src/box_car/box_car_gazebo/models/loop_freeway/meshes/loop_freeway.png"
+   inkscape:export-xdpi="95.730003"
+   inkscape:export-ydpi="95.730003">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="438.32353"
+     inkscape:cy="527.86008"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1848"
+     inkscape:window-height="1016"
+     inkscape:window-x="72"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#87907e;fill-opacity:1;stroke-width:4.46844"
+       id="path837"
+       cx="109.68916"
+       cy="154.655"
+       r="99.071869" />
+    <circle
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:4.19514;stroke-opacity:1"
+       id="path837-3"
+       cx="109.31809"
+       cy="154.7002"
+       r="93.012459" />
+    <circle
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3.20237;stroke-opacity:1"
+       id="path837-3-6"
+       cx="109.41417"
+       cy="151.96487"
+       r="71.001381" />
+  </g>
+</svg>

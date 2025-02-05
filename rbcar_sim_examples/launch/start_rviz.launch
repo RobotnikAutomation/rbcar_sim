@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+    <!--launch rviz-->
+  <node name="viz_node" pkg="rviz" type="rviz" respawn="false"
+    output="screen" args="-d $(find rbcar_sim_examples)/rviz/minimum.rviz"/>
+
+
+</launch>

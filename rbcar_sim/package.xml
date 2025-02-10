@@ -20,6 +20,7 @@
   <run_depend>rbcar_control</run_depend>
   <run_depend>rbcar_gazebo</run_depend>
   <run_depend>rbcar_sim_bringup</run_depend>
+  <run_depend>rbcar_sim_examples</run_depend>
 
   <export><metapackage/></export>
 

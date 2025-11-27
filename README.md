@@ -75,4 +75,4 @@ rm -rf  town_hq
 
 <h1> Launching RBcar simulation with docker </h1>
 
-Follow README.md instructions on [rbcar_docker](./rbcar_docker/README.md).
+Follow README.md instructions on [rbcar_docker/README.md](./rbcar_docker/README.md).

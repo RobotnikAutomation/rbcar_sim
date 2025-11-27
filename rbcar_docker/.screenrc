@@ -1,0 +1,5 @@
+termcapinfo xterm* ti@:te@
+shell -$SHELL
+setenv LD_LIBRARY_PATH /root/catkin_ws/devel/lib:/opt/ros/melodic/lib:/opt/ros/melodic/lib/x86_64-linux-gnu
+zombie kr
+verbose on

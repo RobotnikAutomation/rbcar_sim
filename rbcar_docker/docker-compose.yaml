@@ -1,0 +1,16 @@
+services:
+  complete:
+    container_name: simulation
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility,graphics  # Allow GPU access
+      - NVIDIA_VISIBLE_DEVICES=all  # Expose all GPUs
+    runtime: nvidia
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./catkin_ws:/root/catkin_ws
+    network_mode: host

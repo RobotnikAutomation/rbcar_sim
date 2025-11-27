@@ -75,10 +75,4 @@ rm -rf  town_hq
 
 <h1> Launching RBcar simulation with docker </h1>
 
-```
-mkdir ~/rbcar_docker
-cd ~/rbcar_docker
-docker run -it --rm     --net=host     --env="DISPLAY=$DISPLAY"     --env="QT_X11_NO_MITSHM=1"     --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw"     rbcar_sim:melodic
-```
-
-
+Follow README.md instructions on [rbcar_docker](./rbcar_docker/README.md).

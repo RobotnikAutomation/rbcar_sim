@@ -39,8 +39,7 @@ In case the container is stopped, run the following command.
 ## Compile the Workspace
 If it is the first time you enter the container, run the following command.
 ```bash
-cd /root
-install.sh
+source /root/catkin_ws/rbcar_docker/install.sh
 ```
 
 # Execution

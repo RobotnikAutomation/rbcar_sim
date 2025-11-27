@@ -7,8 +7,8 @@ set -e
 cd /root/catkin_ws
 
 # Instalar dependencias de los paquetes
-dpkg -i "src/rbcar_common/rbcar_control/lib/ros-melodic-robotnik-msgs_1.1.0-0bionic_amd64.deb"
-dpkg -i "src/rbcar_common/rbcar_control/lib/ros-melodic-ackermann-drive-controller_0.0.0-0bionic_amd64.deb"
+dpkg -i "src/submodules/rbcar_common/rbcar_control/lib/ros-melodic-robotnik-msgs_1.1.0-0bionic_amd64.deb"
+dpkg -i "src/submodules/rbcar_common/rbcar_control/lib/ros-melodic-ackermann-drive-controller_0.0.0-0bionic_amd64.deb"
 apt update
 source /opt/ros/melodic/setup.bash
 rosdep update --include-eol-distros

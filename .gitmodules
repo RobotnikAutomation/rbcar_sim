@@ -1,0 +1,18 @@
+[submodule "axis_camera_ptz"]
+	path = submodules/axis_camera_ptz
+	url = https://github.com/RobotnikAutomation/axis_camera_ptz.git
+[submodule "navigation_experimental"]
+	path = submodules/navigation_experimental
+	url = https://github.com/RobotnikAutomation/navigation_experimental
+[submodule "robotnik_sensors"]
+	path = submodules/robotnik_sensors
+	url = https://github.com/RobotnikAutomation/robotnik_sensors
+[submodule "joint_read_command_controller"]
+	path = submodules/joint_read_command_controller
+	url = https://github.com/RobotnikAutomation/joint_read_command_controller
+[submodule "rbcar_common"]
+	path = submodules/rbcar_common
+	url = https://github.com/RobotnikAutomation/rbcar_common
+[submodule "robotnik_msgs"]
+	path = submodules/robotnik_msgs
+	url = https://github.com/RobotnikAutomation/robotnik_msgs

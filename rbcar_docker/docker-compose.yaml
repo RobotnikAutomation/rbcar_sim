@@ -12,5 +12,5 @@ services:
     runtime: nvidia
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
-      - ./catkin_ws:/root/catkin_ws
+      - ..:/root/catkin_ws/src
     network_mode: host

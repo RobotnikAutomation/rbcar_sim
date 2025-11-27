@@ -42,11 +42,6 @@ RUN apt-get update && apt-get install -y \
     psmisc \
     # Cleaning
     && rm -rf /var/lib/apt/lists/*
-COPY \
-    ./bringup.sh \
-    ./.screenrc \ 
-    ./install.sh \
-    /root/
 
 # Keep docker executing indefinetively
 CMD ["/bin/bash", "-c", "sleep infinity"]

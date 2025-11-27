@@ -3,11 +3,10 @@
 The following instructions create a single docker container to run the RBCAR simulation. 
 All the source code of the workspace is hosted on a local directory and mounted on the docker container for the mental health of the developer.
 
-# Installation
+# Setup
 
 To build the image for the simulation, run the container and create the workspace, run the following commmand.
 ```bash
-cd rbcar_docker
 ./build.sh
 ```
 - A docker image called `rbcar-sim-complete` should be installed, check by running the following command.
@@ -20,7 +19,6 @@ docker ps
 ```
 - A directory containing the source of the simulation should be installed too, check by running the following command.
 ```bash
-cd rbcar_docker
 ls -la | grep catkin_ws
 ```
 
@@ -28,29 +26,38 @@ ls -la | grep catkin_ws
 
 To attach or access the container, run the following command.
 ```bash
-cd rbcar_docker
 ./run.sh
 ```
-A simple `docker exec -it simulation /bin/bash` would not be enough, has GUI applications require access to the X11 server of the host PC.
+A simple `docker exec -it simulation /bin/bash` could not work GUI applications like Gazebo require access to the X11 server of the host PC.
 
-### Restart the Stopped Container
+## Restart the Stopped Container
 In case the container is stopped, run the following command.
 ```bash
-cd rbcar_docker
 ./restart.sh
 ```
 
 ## Compile the Workspace
-If it is the first time you enter the container or you have made changes to the workspace code, run the following command.
+If it is the first time you enter the container, run the following command.
 ```bash
 cd /root
 install.sh
 ```
 
-# Run the Simulation
-Inside the container, run the following command.
+# Execution
+To run the simulation, inside the container, run the following command.
 ```bash
-cd /root/catkin_ws
-source devel/setup.bash
-roslaunch rbcar_sin_bringup rbcar_complete.launch
+source /root/catkin_ws/devel/setup.bash
+roslaunch rbcar_sim_bringup rbcar_complete.launch
+```
+
+To test the control system of the robot, inside the container, while the simulation is running, publish over the `/cmd_vel` topic.
+```bash
+rostopic pub -r 20 /cmd_vel geometry_msgs/Twist "linear:
+  x: 1.0
+  y: 0.0
+  z: 0.0
+angular:
+  x: 0.0
+  y: 0.0
+  z: 0.2" 
 ```

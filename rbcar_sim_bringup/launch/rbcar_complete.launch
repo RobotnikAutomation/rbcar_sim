@@ -20,7 +20,7 @@
   </include>
 
   <!-- rbcar_control launch file -->
-  <include file="$(find rbcar_control)/launch/rbcar_control.launch">
+  <include file="$(find rbcar_control)/launch/rbcar_control_alternative.launch">
   </include>
 
   <!-- rbcar_localization launch file -->

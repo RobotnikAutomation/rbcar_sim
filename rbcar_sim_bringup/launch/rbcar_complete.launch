@@ -21,16 +21,14 @@
 
   <!-- rbcar_control launch file -->
   <include file="$(find rbcar_control)/launch/rbcar_control.launch">
-    <arg name="publish_odom" value="false"/>
   </include>
 
   <!-- rbcar_localization launch file -->
-  <include file="$(find rbcar_localization)/launch/robot_localization_odom.launch"/>
-
-  <include file="$(find rbcar_localization)/launch/robot_localization_world.launch"/>
+  <!-- <include file="$(find rbcar_localization)/launch/robot_localization_odom.launch"/>
+  <include file="$(find rbcar_localization)/launch/robot_localization_world.launch"/> -->
 
   <!-- rbcar_navigation launch file -->
-  <include file="$(find rbcar_navigation)/launch/move_base.launch"/>
-  <node pkg="tf" type="static_transform_publisher" name="w2m" args="0 0 0 0 0 0 world map 100" />
+  <!-- <include file="$(find rbcar_navigation)/launch/move_base.launch"/>
+  <node pkg="tf" type="static_transform_publisher" name="w2m" args="0 0 0 0 0 0 world map 100" /> -->
 
 </launch>

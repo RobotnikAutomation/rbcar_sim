@@ -9,7 +9,7 @@ SCRIPT_NAME="$(basename "$0")"
 
 # Download repository (will be mounted on the docker container).
 mkdir $SCRIPT_DIR/catkin_ws/src -p
-vcs import $SCRIPT_DIR/catkin_ws/src --input https://raw.githubusercontent.com/RobotnikAutomation/rbcar_sim/refs/heads/noetic-devel-fix/rbcar_sim.rosinstall
+vcs import $SCRIPT_DIR/catkin_ws/src --input $SCRIPT_DIR/../rbcar_sim.rosinstall
 vcs pull $SCRIPT_DIR/catkin_ws/src
 
 # Build image and run container

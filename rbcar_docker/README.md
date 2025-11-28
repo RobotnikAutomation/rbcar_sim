@@ -3,7 +3,9 @@
 The following instructions create a single docker container to run the RBCAR simulation. 
 All the source code of the workspace is hosted on a local directory and mounted on the docker container for the mental health of the developer.
 
-# Setup
+# Host Machine
+
+## Install image and container
 
 To build the image for the simulation, run the container and create the workspace, run the following commmand.
 ```bash
@@ -36,19 +38,20 @@ In case the container is stopped, run the following command.
 ./restart.sh
 ```
 
+# Docker Container
+
 ## Compile the Workspace
-If it is the first time you enter the container, run the following command.
+If it is the first time you enter the container, inside the container, run the following command.
 ```bash
 source /root/catkin_ws/rbcar_docker/install.sh
 ```
-
-# Execution
+## Start Simulation
 To run the simulation, inside the container, run the following command.
 ```bash
 source /root/catkin_ws/devel/setup.bash
 roslaunch rbcar_sim_bringup rbcar_complete.launch
 ```
-
+## Test Simulation
 To test the control system of the robot, inside the container, while the simulation is running, publish over the `/cmd_vel` topic.
 ```bash
 rostopic pub -r 20 /cmd_vel geometry_msgs/Twist "linear:

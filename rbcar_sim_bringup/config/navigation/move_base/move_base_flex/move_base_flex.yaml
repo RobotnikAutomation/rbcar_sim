@@ -1,0 +1,6 @@
+robot_frame: $(arg base_frame)
+map_frame: $(arg global_frame)
+global_frame: $(arg global_frame)
+planner_patience: 20.0 
+controller_patience: 3.0 
+

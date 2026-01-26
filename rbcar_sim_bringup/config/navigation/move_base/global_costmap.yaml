@@ -1,0 +1,30 @@
+global_costmap:
+  global_frame: $(arg global_frame)
+  robot_base_frame: $(arg base_frame)
+  update_frequency: 5.0
+  publish_frequency: 1.0
+  rolling_window: true # Trick so map is not resized to second-third-... static layer size. Requires explicit width and heigth.
+  static_map: true # Depecrated for most pluggins.
+  width:  200.0
+  height: 200.0
+  resolution: 0.2
+
+  plugins:
+    - name: empty_map
+      type: "costmap_2d::StaticLayer"
+    - name: inflation_layer
+      type: "costmap_2d::InflationLayer"
+
+  empty_map:
+    enabled: true
+    lethal_cost_threshold: 99
+    map_topic: "/map"
+    unknown_cost_value: -1
+    trinary_costmap: false
+    use_maximum: false
+    first_map_only: false
+
+
+  inflation_layer:
+    cost_scaling_factor: 0.5
+    inflation_radius: 0.2

@@ -16,3 +16,18 @@
 [submodule "submodules/navigation_experimental"]
 	path = submodules/navigation_experimental
 	url = https://github.com/ros-planning/navigation_experimental
+[submodule "submodules/robotnik_gazebo_plugins"]
+	path = submodules/robotnik_gazebo_plugins
+	url = https://github.com/RobotnikAutomation/robotnik_gazebo_plugins/
+[submodule "submodules/sbpl"]
+	path = submodules/sbpl
+	url = https://github.com/sbpl/sbpl
+[submodule "submodules/robotnik_move_base"]
+	path = submodules/robotnik_move_base
+	url = https://github.com/RobotnikAutomation/robotnik_move_base
+[submodule "submodules/rcomponent"]
+	path = submodules/rcomponent
+	url = https://github.com/RobotnikAutomation/rcomponent
+[submodule "rbcar_docker/robotnik_navigation_msgs"]
+	path = submodules/robotnik_navigation_msgs
+	url = https://github.com/RobotnikAutomation/robotnik_navigation_msgs

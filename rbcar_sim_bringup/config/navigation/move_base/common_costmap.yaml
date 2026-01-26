@@ -1,0 +1,7 @@
+footprint: [[2.5, -0.75], [2.5, 0.75], [-0.65,0.75], [-0.65, -0.75]]
+
+publish_frequency: 1.0
+
+inflation_layer:
+  inflation_radius: 0.3
+  cost_scaling_factor: 10.0

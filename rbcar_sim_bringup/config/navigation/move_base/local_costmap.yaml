@@ -1,0 +1,52 @@
+local_costmap:
+  global_frame: $(arg odom_frame)
+  robot_base_frame: $(arg base_frame)
+  update_frequency: 5.0
+  rolling_window: true
+  width: 30.0
+  height: 30.0
+  resolution: 0.2
+
+  plugins:
+    - name: free_map
+      type: "costmap_2d::StaticLayer"
+    # - name: traversability_map
+    #   type: "costmap_2d::StaticLayer"
+    - name: inflation_layer
+      type: "costmap_2d::InflationLayer"
+
+  # All 0s, not shown in RVIZ
+  free_map:
+    # The topic that the costmap subscribes to for the static map. 
+    # This parameter is useful when you have multiple costmap instances within a single node that you want to use different static maps.
+    # Default: map
+    map_topic: "/map"
+    # The value for which a cost should be considered unknown when reading in a map from the map server. 
+    # If the costmap is not tracking unknown space, costs of this value will be considered occupied. 
+    # A value of zero also results in this parameter being unused. 
+    # Default: -1
+    unknown_cost_value: -1
+    # If true, unknown values in the map messages are translated directly to the layer. 
+    # Otherwise, unknown values in the map message are translated as FREE_SPACE in the layer. 
+    # Default: true
+    track_unknown_space: false
+    # The threshold value at which to consider a cost lethal when reading in a map from the map server. 
+    lethal_cost_threshold: 100
+    # Only subscribe to the first message on the map topic, ignoring all subsequent messages 
+    first_map_only: false
+    # In addition to map_topic, also subscribe to map_topic + "_updates"
+    subscribe_to_updates: false
+    # Only matters if the static layer is not the bottom layer. 
+    # If true, only the maximum value will be written to the master costmap. 
+    use_maximum: false
+    # If true, translates all map message values to NO_INFORMATION/FREE_SPACE/LETHAL_OBSTACLE (three values). 
+    # If false, a full spectrum of intermediate values is possible. 
+    # Default: true
+    trinary_costmap: false
+
+  inflation_layer:
+    enabled: true
+    inflation_radius: 1.0
+    cost_scaling_factor: 5.0
+
+

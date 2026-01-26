@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find rbcar_sim_bringup)/launch/navigation/move_base_flex.launch"></include>
+</launch>

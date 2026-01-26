@@ -1,0 +1,32 @@
+planners:
+  # - name: 'GlobalPlanner'
+  #   type: 'global_planner/GlobalPlanner'
+  - name: 'SBPLLatticePlanner'
+    type: 'SBPLLatticePlanner'
+
+GlobalPlanner:
+  planner_frequency: 1.0
+  planner_patience: 0.0
+  orientation_mode: 4 # interpolate from current orientation to last orientation
+  allow_unknown: true
+  default_tolerance: 0.0
+  visualize_potential: true
+  use_dijkstra: true
+  use_quadratic: true
+  use_grid_path: false
+  old_navfn_behaviour: false
+  lethal_cost: 253
+  neutral_cost: 66
+  cost_factor: 0.55
+
+SBPLLatticePlanner:
+  planner_type: "ARAPlanner"
+  allocated_time: 20.0
+  initial_epsilon: 3.0
+  environment_type: "XYThetaLattice"
+  forward_search: false
+  primitive_filename: "$(find rbcar_sim_bringup)/config/navigation/sbpl/robotnik_generator_forward_25ms_nobackward.mprim"
+  force_scratch_limit: 500
+  nominalvel_mpersecs: 0.4
+  timetoturn45degsinplace_secs: 0.6
+  lethal_obstacle: 90

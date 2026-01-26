@@ -15,6 +15,7 @@ rosdep update --include-eol-distros
 rosdep install --from-paths src --ignore-src -r -y --include-eol-distros
 
 # Compilar el workspace de ROS
+catkin config --blacklist gps_to_procedure gps_to_procedure_msgs elevator_control elevator_description elevator_gazebo elevator_node robotnik_gazebo_elevator
 catkin build
 source /root/catkin_ws/devel/setup.bash
 

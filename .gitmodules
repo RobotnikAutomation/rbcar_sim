@@ -31,3 +31,6 @@
 [submodule "rbcar_docker/robotnik_navigation_msgs"]
 	path = submodules/robotnik_navigation_msgs
 	url = https://github.com/RobotnikAutomation/robotnik_navigation_msgs
+[submodule "submodules/robotnik_gazebo_models"]
+	path = submodules/robotnik_gazebo_models
+	url = https://github.com/RobotnikAutomation/robotnik_gazebo_models
